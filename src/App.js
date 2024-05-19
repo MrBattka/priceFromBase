@@ -10,6 +10,7 @@ import Xiaomi from "./components/Xiaomi";
 import Yandex from "./components/Yandex";
 import icon from "./source/icon/icon.png";
 import Used from "./components/Used";
+import NewProduct from "./components/NewProduct";
 
 const App = () => {
   const [fullList, setFullList] = useState([]);
@@ -81,6 +82,7 @@ const App = () => {
         <Xiaomi fullList={fullList} />
         <Yandex fullList={fullList} />
         <Used fullList={fullList} />
+        <NewProduct fullList={fullList} />
       </div>
     </div>
   );
