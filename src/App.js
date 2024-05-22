@@ -11,6 +11,7 @@ import Yandex from "./components/Yandex";
 import icon from "./source/icon/icon.png";
 import Used from "./components/Used";
 import NewProduct from "./components/NewProduct";
+import Header from "./components/Header";
 
 const App = () => {
   const [fullList, setFullList] = useState([]);
@@ -74,6 +75,7 @@ const App = () => {
         </div>
       </div>
       <div className="wrapper_cat">
+        {fullList.length > 1 && <Header />}
         <Apple fullList={fullList} />
         <Samsung fullList={fullList} />
         <HuaweiCorosGoogle fullList={fullList} />

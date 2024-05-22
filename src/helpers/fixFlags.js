@@ -22,10 +22,22 @@ const flags = [
   "J/A",
   "UK",
   "AF",
+  "VCA",
+  "XA",
+  "HU",
+  "HUA",
+  "B/A",
+  "ZDA",
+  "AH",
+  "KG/A",
+  "AN/A",
+  "ZP/A",
+  "TN/A"
 ];
 
 let LLAFlag = /LL\/A/g;
 let RUFlag = /RU/g;
+let RUAFlag = /RU\/A/g;
 let EUFlag = /EU/g;
 let KZFlag = /KZ/g;
 let AAFlag = /AA/g;
@@ -40,6 +52,7 @@ let VNAFlag = /VN\/A/g;
 let VNFlag = /VN/g;
 let BAAFlag = /BA\/A/g;
 let BAFlag = /BA/g;
+let BandAFlag = /B\/A/g;
 let ZDAFlag = /ZD\/A/g;
 let ZDFlag = /ZD/g;
 let SAFlag = /SA/g;
@@ -51,13 +64,29 @@ let AFFlag = /AF/g;
 let JAFlag = /J\/A/g;
 let THFlag = /TH\/A/g;
 let UKFlag = /UK/g;
+let HUAFlag = /HU\/A/g;
+let HUFlag = /HU/g;
+let XAFlag = /X\/A/g;
+let VCAFlag = /VC\/A/g;
+let AHAFlag = /AH\/A/g;
+let KGAFlag = /KG\/A/g;
+let ANAFlag = /AN\/A/g;
+let ZPAFlag = /ZP\/A/g;
+let TNAFlag = /TN\/A/g;
+let KAFlag = /K\/A/g;
+let PMFlag = /PM\/A/g;
+let QLFlag = /QL\/A/g;
+let RKFlag = /RK\/A/g;
+let HXFlag = /HX\/A/g;
+let TWFlag = /TW\/A/g;
 
 let usb = /🇺🇸B/g;
 let AFAEM = /🇿🇦AEM/g;
 
 export const changeFlag = (el) => {
   const fixLLA = el.replace(LLAFlag, "🇺🇸");
-  const fixRU = fixLLA.replace(RUFlag, "🇷🇺");
+  const fixRUA = fixLLA.replace(RUAFlag, "🇷🇺");
+  const fixRU = fixRUA.replace(RUFlag, "🇷🇺");
   const fixEU = fixRU.replace(EUFlag, "🇪🇺");
   const fixKZ = fixEU.replace(KZFlag, "🇰🇿");
   const fixMY = fixKZ.replace(MYFlag, "🇲🇾");
@@ -72,7 +101,8 @@ export const changeFlag = (el) => {
   const fixVN = fixVNA.replace(VNFlag, "🇻🇳");
   const fixBAA = fixVN.replace(BAAFlag, "🇬🇧");
   const fixBA = fixBAA.replace(BAFlag, "🇬🇧");
-  const fixZDA = fixBA.replace(ZDAFlag, "🇪🇺");
+  const fixBandA = fixBA.replace(BandAFlag, "🇬🇧");
+  const fixZDA = fixBandA.replace(ZDAFlag, "🇪🇺");
   const fixZD = fixZDA.replace(ZDFlag, "🇪🇺");
   const fixSAA = fixZD.replace(SAAFlag, "🇸🇦");
   const fixSA = fixSAA.replace(SAFlag, "🇸🇦");
@@ -83,8 +113,23 @@ export const changeFlag = (el) => {
   const fixJA = fixAF.replace(JAFlag, "🇯🇵");
   const fixTH = fixJA.replace(THFlag, "🇹🇭");
   const fixUK = fixTH.replace(UKFlag, "🇬🇧");
+  const fixHUA = fixUK.replace(HUAFlag, "🇭🇺");
+  const fixHU = fixHUA.replace(HUFlag, "🇭🇺");
+  const fixXA = fixHU.replace(XAFlag, "🇦🇺");
+  const fixVCA = fixXA.replace(VCAFlag, "🇨🇦");
+  const fixAHA = fixVCA.replace(AHAFlag, "🇦🇪");
+  const fixKGA = fixAHA.replace(KGAFlag, "🇪🇺");
+  const fixANA = fixKGA.replace(ANAFlag, "🇯🇴");
+  const fixZPA = fixANA.replace(ZPAFlag, "🇭🇰");
+  const fixTNA = fixZPA.replace(TNAFlag, "🇻🇳");
+  const fixKA = fixTNA.replace(KAFlag, "🇪🇺");
+  const fixPM = fixKA.replace(PMFlag, "🇪🇺");
+  const fixQL = fixPM.replace(QLFlag, "🇯🇵");
+  const fixRK = fixQL.replace(RKFlag, "🇪🇺");
+  const fixHX = fixRK.replace(HXFlag, "🇦🇿");
+  const fixTW = fixHX.replace(TWFlag, "🇹🇼");
 
-  const fixUsb = fixUK.replace(usb, "USB");
+  const fixUsb = fixTW.replace(usb, "USB");
   const fixAFAEM = fixUsb.replace(AFAEM, "AFAEM");
 
   return fixAFAEM;
@@ -97,7 +142,6 @@ export const checkFixPrice = (el) => {
   );
 };
 export const returnFixPrice = (el, prod) => {
-  // console.log(prod + "prod");
   if (checkFixPrice(el) || el.name.indexOf("USB") != -1) {
     return `${prod} - `;
   } else {

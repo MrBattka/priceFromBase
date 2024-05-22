@@ -9,13 +9,13 @@ export const baseFix = (el) => {
 };
 
 export const fixApple = (el) => {
-    return (
-        el.name.indexOf("Pencil") == -1 &&
-        el.name.indexOf("AirPods") == -1 &&
-        el.name.indexOf("Trackpad") == -1 &&
-        el.name.indexOf("iPhone") == -1 &&
-        el.name.indexOf("Watch SE 2023") == -1 &&
-        el.name.indexOf("Watch S9") == -1 &&
-        el.name.indexOf("MacBook") == -1 
-    );
-  };
+  return (
+    el.name.indexOf("Pencil") == -1 &&
+    el.name.indexOf("AirPods") == -1 &&
+    el.name.indexOf("Trackpad") == -1 &&
+    el.name.indexOf("iPhone") == -1 &&
+    el.name.indexOf("Watch SE 2023") == -1 &&
+    el.name.indexOf("Watch S9") == -1 &&
+    el.name.indexOf("MacBook") == -1
+  );
+};
