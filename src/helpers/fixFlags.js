@@ -21,7 +21,7 @@ const flags = [
   "TH/A",
   "J/A",
   "UK",
-  "🇦🇪",
+  "AF",
 ];
 
 let LLAFlag = /LL\/A/g;
