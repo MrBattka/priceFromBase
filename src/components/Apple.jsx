@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { returnFixPrice } from "../helpers/fixFlags";
+import { changeFlag, returnFixPrice } from "../helpers/fixFlags";
 import { baseFix } from "../helpers/baseFix";
 import style from "./styles.module.css";
 
@@ -18,70 +18,16 @@ const Apple = ({ fullList }) => {
       self.findIndex((t) => t.place === value.place && t.name === value.name)
   );
 
-  console.log(result);
-
-  let LLAFlag = /LL\/A/g;
-  let RUFlag = /RU/g;
-  let EUFlag = /EU/g;
-  let KZFlag = /KZ/g;
-  let AAFlag = /AA/g;
-  let HNAFlag = /HN\/A/g;
-  let HNFlag = /HN/g;
-  let MYFlag = /MY/gi;
-  let CHAFlag = /CH\/A/g;
-  let CHFlag = /CH/g;
-  let LZFlag = /LZ/gi;
-  let HKFlag = /HK/g;
-  let VNAFlag = /VN\/A/g;
-  let VNFlag = /VN/g;
-  let BAAFlag = /BA\/A/g;
-  let BAFlag = /BA/g;
-  let ZDAFlag = /ZD\/A/g;
-  let ZDFlag = /ZD/g;
-  let SAFlag = /SA/g;
-  let SAAFlag = /SA\/A/g;
-  let CNAFlag = /CN\/A/g;
-  let CNFlag = /CN/g;
-  let USFlag = /US/g;
-  let AFRFlag = /AFR/g;
-  let AFAFlag = /AFA/g;
-  let usb = /🇺🇸B/g;
   let macbook = /MacBook/gi;
   let watch = /Watch/gi;
   let appleName = /Apple /gi;
 
-  const fixFlags = (apple) => {
-    const fixLLA = apple.name.replace(LLAFlag, "🇺🇸");
-    const fixRU = fixLLA.replace(RUFlag, "🇷🇺");
-    const fixEU = fixRU.replace(EUFlag, "🇪🇺");
-    const fixKZ = fixEU.replace(KZFlag, "🇰🇿");
-    const fixMY = fixKZ.replace(MYFlag, "🇲🇾");
-    const fixAA = fixMY.replace(AAFlag, "🇦🇪");
-    const fixHNA = fixAA.replace(HNAFlag, "🇭🇳");
-    const fixHN = fixHNA.replace(HNFlag, "🇭🇳");
-    const fixCHA = fixHN.replace(CHAFlag, "🇨🇭");
-    const fixCH = fixCHA.replace(CHFlag, "🇨🇭");
-    const fixLZ = fixCH.replace(LZFlag, "🇨🇱");
-    const fixHK = fixLZ.replace(HKFlag, "🇭🇰");
-    const fixVNA = fixHK.replace(VNAFlag, "🇻🇳");
-    const fixVN = fixVNA.replace(VNFlag, "🇻🇳");
-    const fixBAA = fixVN.replace(BAAFlag, "🇬🇧");
-    const fixBA = fixBAA.replace(BAFlag, "🇬🇧");
-    const fixZDA = fixBA.replace(ZDAFlag, "🇪🇺");
-    const fixZD = fixZDA.replace(ZDFlag, "🇪🇺");
-    const fixSAA = fixZD.replace(SAAFlag, "🇸🇦");
-    const fixSA = fixSAA.replace(SAFlag, "🇸🇦");
-    const fixCNA = fixSA.replace(CNAFlag, "🇨🇳");
-    const fixCN = fixCNA.replace(CNFlag, "🇨🇳");
-    const fixUS = fixCN.replace(USFlag, "🇺🇸");
-    const fixAFR = fixUS.replace(AFRFlag, "🇿🇦");
-    const fixAFA = fixAFR.replace(AFAFlag, "🇿🇦");
-
-    const fixUsb = fixAFA.replace(usb, "USB");
-    const fixMacBook = fixUsb.replace(macbook, "");
+  const fixName = (apple) => {
+    
+    const fixMacBook = apple.name.replace(macbook, "");
     const fixWatch = fixMacBook.replace(watch, "");
     const fixApple = fixWatch.replace(appleName, "");
-    return fixApple;
+    return changeFlag(fixApple);
   };
 
   return (
@@ -108,7 +54,7 @@ const Apple = ({ fullList }) => {
                   apple.name.indexOf("Apple TV") !== -1 ||
                   apple.name.indexOf("Apple HomePod") !== -1 ||
                   apple.name.indexOf("Apple AirTag") !== -1) &&
-                returnFixPrice(apple, fixFlags(apple)) + apple.price}
+                returnFixPrice(apple, fixName(apple)) + apple.price}
             </div>
           ))}
           <br />
@@ -118,7 +64,7 @@ const Apple = ({ fullList }) => {
               {baseFix(iPhone) &&
                 iPhone.price &&
                 iPhone.name.indexOf("iPhone") !== -1 &&
-                returnFixPrice(iPhone, fixFlags(iPhone)) + iPhone.price}
+                returnFixPrice(iPhone, fixName(iPhone)) + iPhone.price}
             </div>
           ))}
           <br />
@@ -128,7 +74,7 @@ const Apple = ({ fullList }) => {
               {baseFix(SE) &&
                 SE.price &&
                 SE.name.indexOf("SE 2023 Gen") !== -1 &&
-                returnFixPrice(SE, fixFlags(SE)) + SE.price}
+                returnFixPrice(SE, fixName(SE)) + SE.price}
             </div>
           ))}
           <br />
@@ -138,7 +84,7 @@ const Apple = ({ fullList }) => {
               {baseFix(s9) &&
                 s9.price &&
                 s9.name.indexOf("Apple Watch S9") !== -1 &&
-                returnFixPrice(s9, fixFlags(s9)) + s9.price}
+                returnFixPrice(s9, fixName(s9)) + s9.price}
             </div>
           ))}
           <br />
@@ -148,7 +94,7 @@ const Apple = ({ fullList }) => {
               {baseFix(iPad) &&
                 iPad.price &&
                 iPad.name.indexOf("iPad") !== -1 &&
-                returnFixPrice(iPad, fixFlags(iPad)) + iPad.price}
+                returnFixPrice(iPad, fixName(iPad)) + iPad.price}
             </div>
           ))}
           <br />
@@ -158,7 +104,7 @@ const Apple = ({ fullList }) => {
               {baseFix(macbook) &&
                 macbook.price &&
                 macbook.name.indexOf("MacBook") !== -1 &&
-                returnFixPrice(macbook, fixFlags(macbook)) + macbook.price}
+                returnFixPrice(macbook, fixName(macbook)) + macbook.price}
             </div>
           ))}
           <br />
@@ -168,7 +114,7 @@ const Apple = ({ fullList }) => {
               {baseFix(iMac) &&
                 iMac.price &&
                 iMac.name.indexOf("iMac") !== -1 &&
-                returnFixPrice(iMac, fixFlags(iMac)) + iMac.price}
+                returnFixPrice(iMac, fixName(iMac)) + iMac.price}
             </div>
           ))}
           <br />

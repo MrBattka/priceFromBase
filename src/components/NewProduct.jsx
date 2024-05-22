@@ -130,6 +130,7 @@ const NewProduct = ({ fullList }) => {
                 newProduct.name.indexOf("Huawei") == -1 &&
                 newProduct.name.indexOf("COROS") == -1 &&
                 newProduct.name.indexOf("Google") == -1 &&
+                newProduct.name.indexOf("OnePlus") == -1 &&
                 returnFixPrice(newProduct, fixFlags(newProduct)) + newProduct.price}
             </div>
           ))}

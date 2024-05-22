@@ -113,7 +113,8 @@ const Used = ({ fullList }) => {
           {result.map((seals, i) => (
             <div key={i}>
               {seals.price &&
-                seals.name.indexOf('Пломба') !== -1 &&
+                (seals.name?.indexOf("Пломбa") !== -1 ||
+                seals.name?.indexOf("Пломба") !== -1) &&
                 returnFixPrice(seals, fixFlags(seals)) + seals.price}
             </div>
           ))}
