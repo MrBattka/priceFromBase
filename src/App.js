@@ -75,7 +75,6 @@ const App = () => {
         </div>
       </div>
       <div className="wrapper_cat">
-        {fullList.length > 1 && <Header />}
         <Apple fullList={fullList} />
         <Samsung fullList={fullList} />
         <HuaweiCorosGoogle fullList={fullList} />
