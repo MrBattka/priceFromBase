@@ -97,8 +97,8 @@ export const changeFlag = (el) => {
   const fixMY = fixKZ.replace(MYFlag, "🇲🇾");
   const fixAA = fixMY.replace(AAFlag, "🇦🇪");
   const fixHNA = fixAA.replace(HNAFlag, "🇮🇳");
-  const fixHN = fixHNA.replace(HNFlag, "🇮🇳");
-  const fixCHA = fixHN.replace(CHAFlag, "🇨🇳");
+  // const fixHN = fixHNA.replace(HNFlag, "🇮🇳");
+  const fixCHA = fixHNA.replace(CHAFlag, "🇨🇳");
   const fixCH = fixCHA.replace(CHFlag, "🇨🇳");
   const fixLZ = fixCH.replace(LZFlag, "🇨🇱");
   const fixHK = fixLZ.replace(HKFlag, "🇭🇰");

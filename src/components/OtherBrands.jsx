@@ -19,10 +19,14 @@ const OtherBrands = ({ fullList }) => {
   );
 
   let asusName = /Asus /gi;
+  let sonyName = /Sony /gi;
+  let corosName = /COROS /gi;
 
   const fixName = (other) => {
     const fixAsus = other.name.replace(asusName, "");
-    return changeFlag(fixAsus);
+    const fixSony = fixAsus.replace(sonyName, "");
+    const fixCoros = fixSony.replace(corosName, "");
+    return changeFlag(fixCoros);
   };
 
   return (
@@ -37,6 +41,49 @@ const OtherBrands = ({ fullList }) => {
 
       {isOpen && (
         <div>
+          <div>📲 Huawei</div>
+          {result.map((huawei, i) => (
+            <div key={i}>
+              {baseFix(huawei) &&
+                huawei.price &&
+                huawei.name.indexOf("Huawei") !== -1 &&
+                returnFixPrice(huawei, fixName(huawei)) + huawei.price}
+            </div>
+          ))}
+          <br />
+          <div>📲 COROS</div>
+          {result.map((coros, i) => (
+            <div key={i}>
+              {baseFix(coros) &&
+                coros.price &&
+                coros.name.indexOf("COROS") !== -1 &&
+                returnFixPrice(coros, fixName(coros)) + coros.price}
+            </div>
+          ))}
+          <br />
+          <div>📲 Google</div>
+          {result.map((google, i) => (
+            <div key={i}>
+              {baseFix(google) &&
+                google.price &&
+                google.name.indexOf("Google") !== -1 &&
+                returnFixPrice(google, fixName(google)) + google.price}
+            </div>
+          ))}
+          <br />
+          <div>Playstation 🎮 / Xbox 🎮</div>
+          {result.map((gameConsole, i) => (
+            <div key={i}>
+              {baseFix(gameConsole) &&
+                gameConsole.price &&
+                (gameConsole.name.indexOf("PlayStation") !== -1 ||
+                  gameConsole.name.indexOf("DualSense") !== -1 ||
+                  gameConsole.name.indexOf("Xbox") !== -1) &&
+                returnFixPrice(gameConsole, fixName(gameConsole)) +
+                  gameConsole.price}
+            </div>
+          ))}
+          <br />
           <div>📹GoPro</div>
           <div>
             {result.map((goPro, i) => (

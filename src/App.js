@@ -2,16 +2,12 @@ import React, { useState } from "react";
 import { read, utils, writeFile } from "xlsx";
 import "./App.css";
 import Apple from "./components/Apple";
-import HuaweiCorosGoogle from "./components/HuaweiCorosGoogle";
-import GameConsole from "./components/GameConsole";
+import NewProduct from "./components/NewProduct";
 import OtherBrands from "./components/OtherBrands";
 import Samsung from "./components/Samsung";
-import Xiaomi from "./components/Xiaomi";
-import Yandex from "./components/Yandex";
-import icon from "./source/icon/icon.png";
 import Used from "./components/Used";
-import NewProduct from "./components/NewProduct";
-import Header from "./components/Header";
+import XiaomiYandexJBL from "./components/XiaomiYandexJBL";
+import icon from "./source/icon/icon.png";
 
 const App = () => {
   const [fullList, setFullList] = useState([]);
@@ -77,11 +73,8 @@ const App = () => {
       <div className="wrapper_cat">
         <Apple fullList={fullList} />
         <Samsung fullList={fullList} />
-        <HuaweiCorosGoogle fullList={fullList} />
-        <GameConsole fullList={fullList} />
         <OtherBrands fullList={fullList} />
-        <Xiaomi fullList={fullList} />
-        <Yandex fullList={fullList} />
+        <XiaomiYandexJBL fullList={fullList} />
         <Used fullList={fullList} />
         <NewProduct fullList={fullList} />
       </div>
