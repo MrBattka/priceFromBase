@@ -17,11 +17,15 @@ const Samsung = ({ fullList }) => {
       index ===
       self.findIndex((t) => t.place === value.place && t.name === value.name)
   );
-  
+ 
+  let wifi = /Wifi/gi;
+  let wifi2 = /Wi-fi/gi;
   let samsungName = /Samsung /gi;
 
   const fixName = (samsung) => {
-    const fixSamsung = samsung.name.replace(samsungName, "");
+    const fixWifi = samsung.name.replace(wifi, "Wi-Fi");
+    const fixWifi2 = fixWifi.replace(wifi2, "Wi-Fi");
+    const fixSamsung = fixWifi2.replace(samsungName, "");
     return changeFlag(fixSamsung);
   };
 

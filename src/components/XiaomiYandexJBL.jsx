@@ -17,14 +17,18 @@ const Xiaomi = ({ fullList }) => {
       index ===
       self.findIndex((t) => t.place === value.place && t.name === value.name)
   );
-  
+ 
+  let wifi = /Wifi/gi;
+  let wifi2 = /Wi-fi/gi;
   let poco = /Pocophone/gi;
   let note = /Redmi Note/gi;
   let xiaomiName = /Xiaomi /gi;
   let yandexName = /Yandex /gi;
 
   const fixName = (xiaomi) => {
-    const fixPoco = xiaomi.name.replace(poco, "Poco");
+    const fixWifi = xiaomi.name.replace(wifi, "Wi-Fi");
+    const fixWifi2 = fixWifi.replace(wifi2, "Wi-Fi");
+    const fixPoco = fixWifi2.replace(poco, "Poco");
     const fixNote = fixPoco.replace(note, "Note");
     const fixXiaomi = fixNote.replace(xiaomiName, "");
     const fixYandex = fixXiaomi.replace(yandexName, "");

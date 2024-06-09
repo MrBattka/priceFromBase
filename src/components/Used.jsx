@@ -17,11 +17,15 @@ const Used = ({ fullList }) => {
       index ===
       self.findIndex((t) => t.place === value.place && t.name === value.name)
   );
-
+  
+  let wifi = /Wifi/gi;
+  let wifi2 = /Wi-fi/gi;
   let corosName = /COROS /gi;
 
   const fixName = (used) => {
-    const fixCoros = used.name.replace(corosName, "");
+    const fixWifi = used.name.replace(wifi, "Wi-Fi");
+    const fixWifi2 = fixWifi.replace(wifi2, "Wi-Fi");
+    const fixCoros = fixWifi2.replace(corosName, "");
     return changeFlag(fixCoros);
   };
 

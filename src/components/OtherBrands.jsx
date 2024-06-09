@@ -18,12 +18,16 @@ const OtherBrands = ({ fullList }) => {
       self.findIndex((t) => t.place === value.place && t.name === value.name)
   );
 
+  let wifi = /Wifi/gi;
+  let wifi2 = /Wi-fi/gi;
   let asusName = /Asus /gi;
   let sonyName = /Sony /gi;
   let corosName = /COROS /gi;
 
   const fixName = (other) => {
-    const fixAsus = other.name.replace(asusName, "");
+    const fixWifi = other.name.replace(wifi, "Wi-Fi");
+    const fixWifi2 = fixWifi.replace(wifi2, "Wi-Fi");
+    const fixAsus = fixWifi2.replace(asusName, "");
     const fixSony = fixAsus.replace(sonyName, "");
     const fixCoros = fixSony.replace(corosName, "");
     return changeFlag(fixCoros);

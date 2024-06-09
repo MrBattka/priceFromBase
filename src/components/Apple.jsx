@@ -18,13 +18,16 @@ const Apple = ({ fullList }) => {
       self.findIndex((t) => t.place === value.place && t.name === value.name)
   );
 
+  let wifi = /Wifi/gi;
+  let wifi2 = /Wi-fi/gi;
   let macbook = /MacBook/gi;
   let watch = /Watch/gi;
   let appleName = /Apple /gi;
 
   const fixName = (apple) => {
-    
-    const fixMacBook = apple.name.replace(macbook, "");
+    const fixWifi = apple.name.replace(wifi, "Wi-Fi");
+    const fixWifi2 = fixWifi.replace(wifi2, "Wi-Fi");
+    const fixMacBook = fixWifi2.replace(macbook, "");
     const fixWatch = fixMacBook.replace(watch, "");
     const fixApple = fixWatch.replace(appleName, "");
     return changeFlag(fixApple);
