@@ -23,6 +23,7 @@ const Apple = ({ fullList }) => {
   let macbook = /MacBook/gi;
   let watch = /Watch/gi;
   let appleName = /Apple /gi;
+  let iPhoneName = /iPhone /gi;
 
   const fixName = (apple) => {
     const fixWifi = apple.name.replace(wifi, "Wi-Fi");
@@ -30,7 +31,8 @@ const Apple = ({ fullList }) => {
     const fixMacBook = fixWifi2.replace(macbook, "");
     const fixWatch = fixMacBook.replace(watch, "");
     const fixApple = fixWatch.replace(appleName, "");
-    return changeFlag(fixApple);
+    const fixIPhone = fixApple.replace(iPhoneName, "");
+    return changeFlag(fixIPhone);
   };
 
   return (
@@ -76,7 +78,8 @@ const Apple = ({ fullList }) => {
             <div key={i}>
               {baseFix(SE) &&
                 SE.price &&
-                SE.name.indexOf("SE 2023 Gen") !== -1 &&
+                (SE.name.indexOf("SE 2023 Gen") !== -1 ||
+                  SE.name.indexOf("Watch SE") !== -1) &&
                 returnFixPrice(SE, fixName(SE)) + SE.price}
             </div>
           ))}

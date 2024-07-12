@@ -87,6 +87,7 @@ let TWFlag = /TW/g;
 
 let usb = /🇺🇸B/g;
 let AFAEM = /🇿🇦AEM/g;
+let asus = /AS🇺🇸/g
 
 export const changeFlag = (el) => {
   const fixLLA = el.replace(LLAFlag, "🇺🇸");
@@ -137,8 +138,9 @@ export const changeFlag = (el) => {
 
   const fixUsb = fixTW.replace(usb, "USB");
   const fixAFAEM = fixUsb.replace(AFAEM, "AFAEM");
+  const fixAsus = fixAFAEM.replace(asus, "ASUS");
 
-  return fixAFAEM;
+  return fixAsus;
 };
 
 export const checkFixPrice = (el) => {

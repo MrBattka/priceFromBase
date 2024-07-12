@@ -20,7 +20,7 @@ const Samsung = ({ fullList }) => {
  
   let wifi = /Wifi/gi;
   let wifi2 = /Wi-fi/gi;
-  let samsungName = /Samsung /gi;
+  let samsungName = /Samsung Galaxy /gi;
 
   const fixName = (samsung) => {
     const fixWifi = samsung.name.replace(wifi, "Wi-Fi");
