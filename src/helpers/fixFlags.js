@@ -143,7 +143,7 @@ export const changeFlag = (el) => {
   const fixTW = fixTWA.replace(TWFlag, "🇹🇼");
   const fixZA = fixTW.replace(ZAFlag, "🇿🇦");
   const fixJP = fixZA.replace(JPFlag, "🇯🇵");
-  const fixPY = fixJP.replace(PYFlag, "🇵🇼");
+  const fixPY = fixJP.replace(PYFlag, "🇦🇪");
 
   const fixUsb = fixPY.replace(usb, "USB");
   const fixAFAEM = fixUsb.replace(AFAEM, "AFAEM");
