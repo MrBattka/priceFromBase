@@ -23,6 +23,9 @@ const OtherBrands = ({ fullList }) => {
   let asusName = /Asus /gi;
   let sonyName = /Sony /gi;
   let corosName = /COROS /gi;
+  let onePlusName = /OnePlus /gi;
+  let ZTEName = /ZTE /gi;
+  let dysonName = /Dyson /gi;
 
   const fixName = (other) => {
     const fixWifi = other.name.replace(wifi, "Wi-Fi");
@@ -30,7 +33,10 @@ const OtherBrands = ({ fullList }) => {
     const fixAsus = fixWifi2.replace(asusName, "");
     const fixSony = fixAsus.replace(sonyName, "");
     const fixCoros = fixSony.replace(corosName, "");
-    return changeFlag(fixCoros);
+    const fixOnePlus = fixCoros.replace(onePlusName, "");
+    const fixZTE = fixOnePlus.replace(ZTEName, "");
+    const fixDyson = fixZTE.replace(dysonName, "");
+    return changeFlag(fixDyson);
   };
 
   return (
@@ -142,6 +148,26 @@ const OtherBrands = ({ fullList }) => {
                 onePlus.price &&
                 onePlus.name.indexOf("OnePlus") !== -1 &&
                 returnFixPrice(onePlus, fixName(onePlus)) + onePlus.price}
+            </div>
+          ))}
+          <br />
+          <div>📲 ZTE</div>
+          {result.map((ZTE, i) => (
+            <div key={i}>
+              {baseFix(ZTE) &&
+                ZTE.price &&
+                ZTE.name.indexOf("ZTE") !== -1 &&
+                returnFixPrice(ZTE, fixName(ZTE)) + ZTE.price}
+            </div>
+          ))}
+          <br />
+          <div>📲 Dyson</div>
+          {result.map((dyson, i) => (
+            <div key={i}>
+              {baseFix(dyson) &&
+                dyson.price &&
+                dyson.name.indexOf("Dyson") !== -1 &&
+                returnFixPrice(dyson, fixName(dyson)) + dyson.price}
             </div>
           ))}
           <br />
