@@ -109,7 +109,7 @@ const OtherBrands = ({ fullList }) => {
             ))}
           </div>
           <br />
-          <div>Finis</div>
+          <div>📲 Finis</div>
           {result.map((finis, i) => (
             <div key={i}>
               {baseFix(finis) &&
