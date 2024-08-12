@@ -89,6 +89,7 @@ let AAAFlag = /AA\/A/g;
 let ZAFlag = /ZA/g;
 let JPFlag = /JP/g;
 let PYFlag = /PY/g;
+let GBFlag = /GB/g;
 
 
 let usb = /🇺🇸B/g;
@@ -145,8 +146,9 @@ export const changeFlag = (el) => {
   const fixZA = fixTW.replace(ZAFlag, "🇿🇦");
   const fixJP = fixZA.replace(JPFlag, "🇯🇵");
   const fixPY = fixJP.replace(PYFlag, "🇦🇪");
+  const fixGB = fixPY.replace(GBFlag, "🇬🇧");
 
-  const fixUsb = fixPY.replace(usb, "USB");
+  const fixUsb = fixGB.replace(usb, "USB");
   const fixAFAEM = fixUsb.replace(AFAEM, "AFAEM");
   const fixAsus = fixAFAEM.replace(asus, "ASUS");
   const fixMydc = fixAsus.replace(mydc, "MYDC");

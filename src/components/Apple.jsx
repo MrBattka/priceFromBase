@@ -84,6 +84,16 @@ const Apple = ({ fullList }) => {
             </div>
           ))}
           <br />
+          <div>⌚️Apple Watch S8</div>
+          {result.map((s8, i) => (
+            <div key={i}>
+              {baseFix(s8) &&
+                s8.price &&
+                s8.name.indexOf("Apple Watch S8") !== -1 &&
+                returnFixPrice(s8, fixName(s8)) + s8.price}
+            </div>
+          ))}
+          <br />
           <div>⌚️Apple Watch S9</div>
           {result.map((s9, i) => (
             <div key={i}>
