@@ -14,3 +14,11 @@
 .header {
     width: 300px;
 }
+
+h4 {
+    cursor: pointer;
+}
+
+h4:active {
+    color: rgb(131, 131, 131);
+}

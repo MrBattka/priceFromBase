@@ -8,6 +8,34 @@ const OtherBrands = ({ fullList }) => {
 
   const arr = [];
 
+  const copyTable = () => {
+    const elTable = document.querySelector("table");
+
+    let range, sel;
+
+    // Ensure that range and selection are supported by the browsers
+    if (document.createRange && window.getSelection) {
+      range = document.createRange();
+      sel = window.getSelection();
+      // unselect any element in the page
+      sel.removeAllRanges();
+
+      try {
+        range.selectNodeContents(elTable);
+        sel.addRange(range);
+      } catch (e) {
+        range.selectNode(elTable);
+        sel.addRange(range);
+      }
+
+      document.execCommand("copy");
+    }
+
+    sel.removeAllRanges();
+
+    console.log("Element Copied! Paste it in a file");
+  };
+
   fullList.map((a) => {
     arr.push({ name: a.Наименование, price: a.Опт });
   });
@@ -51,126 +79,135 @@ const OtherBrands = ({ fullList }) => {
 
       {isOpen && (
         <div>
-          <div>📲 Huawei</div>
-          {result.map((huawei, i) => (
-            <div key={i}>
-              {baseFix(huawei) &&
-                huawei.price &&
-                huawei.name.indexOf("Huawei") !== -1 &&
-                returnFixPrice(huawei, fixName(huawei)) + huawei.price}
-            </div>
-          ))}
-          <br />
-          <div>📲 COROS</div>
-          {result.map((coros, i) => (
-            <div key={i}>
-              {baseFix(coros) &&
-                coros.price &&
-                coros.name.indexOf("COROS") !== -1 &&
-                returnFixPrice(coros, fixName(coros)) + coros.price}
-            </div>
-          ))}
-          <br />
-          <div>📲 Google</div>
-          {result.map((google, i) => (
-            <div key={i}>
-              {baseFix(google) &&
-                google.price &&
-                google.name.indexOf("Google") !== -1 &&
-                returnFixPrice(google, fixName(google)) + google.price}
-            </div>
-          ))}
-          <br />
-          <div>Playstation 🎮 / Xbox 🎮</div>
-          {result.map((gameConsole, i) => (
-            <div key={i}>
-              {baseFix(gameConsole) &&
-                gameConsole.price &&
-                (gameConsole.name.indexOf("PlayStation") !== -1 ||
-                  gameConsole.name.indexOf("DualSense") !== -1 ||
-                  gameConsole.name.indexOf("Xbox") !== -1) &&
-                returnFixPrice(gameConsole, fixName(gameConsole)) +
-                  gameConsole.price}
-            </div>
-          ))}
-          <br />
-          <div>📹GoPro</div>
-          <div>
-            {result.map((goPro, i) => (
+          <h4
+            onClick={() => {
+              copyTable();
+            }}
+          >
+            ❐ Copy
+          </h4>
+          <table>
+            <div>📲 Huawei</div>
+            {result.map((huawei, i) => (
               <div key={i}>
-                {baseFix(goPro) &&
-                  goPro.price &&
-                  (goPro.name.indexOf("GoPro") !== -1 ||
-                    goPro.name.indexOf("Protective") !== -1 ||
-                    goPro.name.indexOf("El Grande") !== -1 ||
-                    goPro.name.indexOf("3-Way") !== -1) &&
-                  returnFixPrice(goPro, fixName(goPro)) + goPro.price}
+                {baseFix(huawei) &&
+                  huawei.price &&
+                  huawei.name.indexOf("Huawei") !== -1 &&
+                  returnFixPrice(huawei, fixName(huawei)) + huawei.price}
               </div>
             ))}
-          </div>
-          <br />
-          <div>📲 Finis</div>
-          {result.map((finis, i) => (
-            <div key={i}>
-              {baseFix(finis) &&
-                finis.price &&
-                finis.name.indexOf("Finis") !== -1 &&
-                returnFixPrice(finis, fixName(finis)) + finis.price}
-            </div>
-          ))}
-          <div>
             <br />
-            <div>📲 Asus</div>
-            {result.map((asus, i) => (
+            <div>📲 COROS</div>
+            {result.map((coros, i) => (
               <div key={i}>
-                {baseFix(asus) &&
-                  asus.price &&
-                  asus.name.indexOf("Asus") !== -1 &&
-                  returnFixPrice(asus, fixName(asus)) + asus.price}
+                {baseFix(coros) &&
+                  coros.price &&
+                  coros.name.indexOf("COROS") !== -1 &&
+                  returnFixPrice(coros, fixName(coros)) + coros.price}
               </div>
             ))}
-          </div>
-          <br />
-          <div>📲 Nothing Phone</div>
-          {result.map((nothing, i) => (
-            <div key={i}>
-              {baseFix(nothing) &&
-                nothing.price &&
-                nothing.name.indexOf("Nothing") !== -1 &&
-                returnFixPrice(nothing, fixName(nothing)) + nothing.price}
+            <br />
+            <div>📲 Google</div>
+            {result.map((google, i) => (
+              <div key={i}>
+                {baseFix(google) &&
+                  google.price &&
+                  google.name.indexOf("Google") !== -1 &&
+                  returnFixPrice(google, fixName(google)) + google.price}
+              </div>
+            ))}
+            <br />
+            <div>Playstation 🎮 / Xbox 🎮</div>
+            {result.map((gameConsole, i) => (
+              <div key={i}>
+                {baseFix(gameConsole) &&
+                  gameConsole.price &&
+                  (gameConsole.name.indexOf("PlayStation") !== -1 ||
+                    gameConsole.name.indexOf("DualSense") !== -1 ||
+                    gameConsole.name.indexOf("Xbox") !== -1) &&
+                  returnFixPrice(gameConsole, fixName(gameConsole)) +
+                    gameConsole.price}
+              </div>
+            ))}
+            <br />
+            <div>📹GoPro</div>
+            <div>
+              {result.map((goPro, i) => (
+                <div key={i}>
+                  {baseFix(goPro) &&
+                    goPro.price &&
+                    (goPro.name.indexOf("GoPro") !== -1 ||
+                      goPro.name.indexOf("Protective") !== -1 ||
+                      goPro.name.indexOf("El Grande") !== -1 ||
+                      goPro.name.indexOf("3-Way") !== -1) &&
+                    returnFixPrice(goPro, fixName(goPro)) + goPro.price}
+                </div>
+              ))}
             </div>
-          ))}
-          <br />
-          <div>📲 One Plus</div>
-          {result.map((onePlus, i) => (
-            <div key={i}>
-              {baseFix(onePlus) &&
-                onePlus.price &&
-                onePlus.name.indexOf("OnePlus") !== -1 &&
-                returnFixPrice(onePlus, fixName(onePlus)) + onePlus.price}
+            <br />
+            <div>📲 Finis</div>
+            {result.map((finis, i) => (
+              <div key={i}>
+                {baseFix(finis) &&
+                  finis.price &&
+                  finis.name.indexOf("Finis") !== -1 &&
+                  returnFixPrice(finis, fixName(finis)) + finis.price}
+              </div>
+            ))}
+            <div>
+              <br />
+              <div>📲 Asus</div>
+              {result.map((asus, i) => (
+                <div key={i}>
+                  {baseFix(asus) &&
+                    asus.price &&
+                    asus.name.indexOf("Asus") !== -1 &&
+                    returnFixPrice(asus, fixName(asus)) + asus.price}
+                </div>
+              ))}
             </div>
-          ))}
-          <br />
-          <div>📲 ZTE</div>
-          {result.map((ZTE, i) => (
-            <div key={i}>
-              {baseFix(ZTE) &&
-                ZTE.price &&
-                ZTE.name.indexOf("ZTE") !== -1 &&
-                returnFixPrice(ZTE, fixName(ZTE)) + ZTE.price}
-            </div>
-          ))}
-          <br />
-          <div>📲 Dyson</div>
-          {result.map((dyson, i) => (
-            <div key={i}>
-              {baseFix(dyson) &&
-                dyson.price &&
-                dyson.name.indexOf("Dyson") !== -1 &&
-                returnFixPrice(dyson, fixName(dyson)) + dyson.price}
-            </div>
-          ))}
-          <br />
+            <br />
+            <div>📲 Nothing Phone</div>
+            {result.map((nothing, i) => (
+              <div key={i}>
+                {baseFix(nothing) &&
+                  nothing.price &&
+                  nothing.name.indexOf("Nothing") !== -1 &&
+                  returnFixPrice(nothing, fixName(nothing)) + nothing.price}
+              </div>
+            ))}
+            <br />
+            <div>📲 One Plus</div>
+            {result.map((onePlus, i) => (
+              <div key={i}>
+                {baseFix(onePlus) &&
+                  onePlus.price &&
+                  onePlus.name.indexOf("OnePlus") !== -1 &&
+                  returnFixPrice(onePlus, fixName(onePlus)) + onePlus.price}
+              </div>
+            ))}
+            <br />
+            <div>📲 ZTE</div>
+            {result.map((ZTE, i) => (
+              <div key={i}>
+                {baseFix(ZTE) &&
+                  ZTE.price &&
+                  ZTE.name.indexOf("ZTE") !== -1 &&
+                  returnFixPrice(ZTE, fixName(ZTE)) + ZTE.price}
+              </div>
+            ))}
+            <br />
+            <div>📲 Dyson</div>
+            {result.map((dyson, i) => (
+              <div key={i}>
+                {baseFix(dyson) &&
+                  dyson.price &&
+                  dyson.name.indexOf("Dyson") !== -1 &&
+                  returnFixPrice(dyson, fixName(dyson)) + dyson.price}
+              </div>
+            ))}
+            <br />
+          </table>
         </div>
       )}
     </div>

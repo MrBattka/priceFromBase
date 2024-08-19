@@ -8,6 +8,34 @@ const Apple = ({ fullList }) => {
 
   const arr = [];
 
+  const copyTable = () => {
+    const elTable = document.querySelector("table");
+
+    let range, sel;
+
+    // Ensure that range and selection are supported by the browsers
+    if (document.createRange && window.getSelection) {
+      range = document.createRange();
+      sel = window.getSelection();
+      // unselect any element in the page
+      sel.removeAllRanges();
+
+      try {
+        range.selectNodeContents(elTable);
+        sel.addRange(range);
+      } catch (e) {
+        range.selectNode(elTable);
+        sel.addRange(range);
+      }
+
+      document.execCommand("copy");
+    }
+
+    sel.removeAllRanges();
+
+    console.log("Element Copied! Paste it in a file");
+  };
+
   fullList.map((a) => {
     arr.push({ name: a.Наименование, price: a.Опт });
   });
@@ -47,93 +75,102 @@ const Apple = ({ fullList }) => {
 
       {isOpen && (
         <div>
-          <div>📲 Apple</div>
-          {result.map((apple, i) => (
-            <div key={i}>
-              {baseFix(apple) &&
-                apple.price &&
-                (apple.name.indexOf("AirPods") !== -1 ||
-                  apple.name.indexOf("Pencil") !== -1 ||
-                  apple.name.indexOf("Apple Magic") !== -1 ||
-                  apple.name.indexOf("Apple Battary") !== -1 ||
-                  apple.name.indexOf("Apple TV") !== -1 ||
-                  apple.name.indexOf("Apple HomePod") !== -1 ||
-                  apple.name.indexOf("Apple AirTag") !== -1) &&
-                returnFixPrice(apple, fixName(apple)) + apple.price}
-            </div>
-          ))}
-          <br />
-          <div>📲 Apple iPhone</div>
-          {result.map((iPhone, i) => (
-            <div key={i}>
-              {baseFix(iPhone) &&
-                iPhone.price &&
-                iPhone.name.indexOf("iPhone") !== -1 &&
-                returnFixPrice(iPhone, fixName(iPhone)) + iPhone.price}
-            </div>
-          ))}
-          <br />
-          <div>⌚️ Apple Watch SE 2023</div>
-          {result.map((SE, i) => (
-            <div key={i}>
-              {baseFix(SE) &&
-                SE.price &&
-                (SE.name.indexOf("SE 2023 Gen") !== -1 ||
-                  SE.name.indexOf("Watch SE") !== -1) &&
-                returnFixPrice(SE, fixName(SE)) + SE.price}
-            </div>
-          ))}
-          <br />
-          <div>⌚️Apple Watch S8</div>
-          {result.map((s8, i) => (
-            <div key={i}>
-              {baseFix(s8) &&
-                s8.price &&
-                s8.name.indexOf("Apple Watch S8") !== -1 &&
-                returnFixPrice(s8, fixName(s8)) + s8.price}
-            </div>
-          ))}
-          <br />
-          <div>⌚️Apple Watch S9</div>
-          {result.map((s9, i) => (
-            <div key={i}>
-              {baseFix(s9) &&
-                s9.price &&
-                s9.name.indexOf("Apple Watch S9") !== -1 &&
-                returnFixPrice(s9, fixName(s9)) + s9.price}
-            </div>
-          ))}
-          <br />
-          <div>📲 Apple iPad</div>
-          {result.map((iPad, i) => (
-            <div key={i}>
-              {baseFix(iPad) &&
-                iPad.price &&
-                iPad.name.indexOf("iPad") !== -1 &&
-                returnFixPrice(iPad, fixName(iPad)) + iPad.price}
-            </div>
-          ))}
-          <br />
-          <div>📲 Apple MacBook</div>
-          {result.map((macbook, i) => (
-            <div key={i}>
-              {baseFix(macbook) &&
-                macbook.price &&
-                macbook.name.indexOf("MacBook") !== -1 &&
-                returnFixPrice(macbook, fixName(macbook)) + macbook.price}
-            </div>
-          ))}
-          <br />
-          <div>📲 Apple iMac</div>
-          {result.map((iMac, i) => (
-            <div key={i}>
-              {baseFix(iMac) &&
-                iMac.price &&
-                iMac.name.indexOf("iMac") !== -1 &&
-                returnFixPrice(iMac, fixName(iMac)) + iMac.price}
-            </div>
-          ))}
-          <br />
+          <h4
+            onClick={() => {
+              copyTable();
+            }}
+          >
+            ❐ Copy
+          </h4>
+          <table>
+            <div>📲 Apple</div>
+            {result.map((apple, i) => (
+              <div key={i}>
+                {baseFix(apple) &&
+                  apple.price &&
+                  (apple.name.indexOf("AirPods") !== -1 ||
+                    apple.name.indexOf("Pencil") !== -1 ||
+                    apple.name.indexOf("Apple Magic") !== -1 ||
+                    apple.name.indexOf("Apple Battary") !== -1 ||
+                    apple.name.indexOf("Apple TV") !== -1 ||
+                    apple.name.indexOf("Apple HomePod") !== -1 ||
+                    apple.name.indexOf("Apple AirTag") !== -1) &&
+                  returnFixPrice(apple, fixName(apple)) + apple.price}
+              </div>
+            ))}
+            <br />
+            <div>📲 Apple iPhone</div>
+            {result.map((iPhone, i) => (
+              <div key={i}>
+                {baseFix(iPhone) &&
+                  iPhone.price &&
+                  iPhone.name.indexOf("iPhone") !== -1 &&
+                  returnFixPrice(iPhone, fixName(iPhone)) + iPhone.price}
+              </div>
+            ))}
+            <br />
+            <div>⌚️ Apple Watch SE 2023</div>
+            {result.map((SE, i) => (
+              <div key={i}>
+                {baseFix(SE) &&
+                  SE.price &&
+                  (SE.name.indexOf("SE 2023 Gen") !== -1 ||
+                    SE.name.indexOf("Watch SE") !== -1) &&
+                  returnFixPrice(SE, fixName(SE)) + SE.price}
+              </div>
+            ))}
+            <br />
+            <div>⌚️Apple Watch S8</div>
+            {result.map((s8, i) => (
+              <div key={i}>
+                {baseFix(s8) &&
+                  s8.price &&
+                  s8.name.indexOf("Apple Watch S8") !== -1 &&
+                  returnFixPrice(s8, fixName(s8)) + s8.price}
+              </div>
+            ))}
+            <br />
+            <div>⌚️Apple Watch S9</div>
+            {result.map((s9, i) => (
+              <div key={i}>
+                {baseFix(s9) &&
+                  s9.price &&
+                  s9.name.indexOf("Apple Watch S9") !== -1 &&
+                  returnFixPrice(s9, fixName(s9)) + s9.price}
+              </div>
+            ))}
+            <br />
+            <div>📲 Apple iPad</div>
+            {result.map((iPad, i) => (
+              <div key={i}>
+                {baseFix(iPad) &&
+                  iPad.price &&
+                  iPad.name.indexOf("iPad") !== -1 &&
+                  returnFixPrice(iPad, fixName(iPad)) + iPad.price}
+              </div>
+            ))}
+            <br />
+            <div>📲 Apple MacBook</div>
+            {result.map((macbook, i) => (
+              <div key={i}>
+                {baseFix(macbook) &&
+                  macbook.price &&
+                  macbook.name.indexOf("MacBook") !== -1 &&
+                  returnFixPrice(macbook, fixName(macbook)) + macbook.price}
+              </div>
+            ))}
+            <br />
+            <div>📲 Apple iMac</div>
+            {result.map((iMac, i) => (
+              <div key={i}>
+                {baseFix(iMac) &&
+                  iMac.price &&
+                  iMac.name.indexOf("iMac") !== -1 &&
+                  returnFixPrice(iMac, fixName(iMac)) + iMac.price}
+              </div>
+            ))}
+            <br />
+          </table>
         </div>
       )}
     </div>
