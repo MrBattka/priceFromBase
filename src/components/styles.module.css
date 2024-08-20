@@ -16,9 +16,11 @@
 }
 
 h4 {
+    margin: 0 0 5px 0;
     cursor: pointer;
+    color: rgb(80, 80, 80);
 }
 
 h4:active {
-    color: rgb(131, 131, 131);
+    color: rgb(158, 158, 158);
 }
