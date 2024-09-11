@@ -39,7 +39,8 @@ const flags = [
   "HX/A",
   "PY",
   "JP",
-  "QN/A"
+  "QN/A",
+  "SG"
 ];
 
 let LLAFlag = /LL\/A/g;
@@ -93,11 +94,12 @@ let JPFlag = /JP/g;
 let PYFlag = /PY/g;
 let GBFlag = /GB/g;
 let QNAFlag = /QN\/A/g
+let SGFlag = /SG/g
 
 let usb = /🇺🇸B/g;
 let AFAEM = /🇿🇦AEM/g;
 let asus = /AS🇺🇸/g
-let mydc = /🇲🇾DC/g
+let mydc = /🇲🇾D/g
 
 export const changeFlag = (el) => {
   const fixLLA = el.replace(LLAFlag, "🇺🇸");
@@ -151,8 +153,9 @@ export const changeFlag = (el) => {
   const fixPY = fixJP.replace(PYFlag, "🇦🇪");
   const fixGB = fixPY.replace(GBFlag, "🇬🇧");
   const fixQNA = fixGB.replace(QNAFlag, "🇪🇺");
+  const fixSG = fixQNA.replace(SGFlag, "🇸🇬");
 
-  const fixUsb = fixQNA.replace(usb, "USB");
+  const fixUsb = fixSG.replace(usb, "USB");
   const fixAFAEM = fixUsb.replace(AFAEM, "AFAEM");
   const fixAsus = fixAFAEM.replace(asus, "ASUS");
   const fixMydc = fixAsus.replace(mydc, "MYDC");

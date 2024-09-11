@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { changeFlag, returnFixPrice } from "../helpers/fixFlags";
 import { baseFix } from "../helpers/baseFix";
 import style from "./styles.module.css";
@@ -35,6 +35,9 @@ const Apple = ({ fullList }) => {
     const fixIPhone = fixApple.replace(iPhoneName, "");
     return changeFlag(fixIPhone);
   };
+
+  const refWatchSE = useRef()
+  const refWatchS9 = useRef()
 
   return (
     <div>
@@ -82,15 +85,19 @@ const Apple = ({ fullList }) => {
               </div>
             ))}
             <br />
-            <div>⌚️ Apple Watch SE 2023</div>
-            {result.map((SE, i) => (
-              <div key={i}>
-                {baseFix(SE) &&
-                  SE.price &&
-                  (SE.name.indexOf("SE 2023 Gen") !== -1 ||
-                    SE.name.indexOf("Watch SE") !== -1) &&
-                  returnFixPrice(SE, fixName(SE)) + SE.price}
-              </div>
+            {refWatchSE ? <div>⌚️ Apple Watch SE 2023</div> : null}
+            {result.map((SE, i) =>
+            (
+              <>
+                {(SE.name.indexOf("SE 2023 Gen") !== -1 ||
+                  SE.name.indexOf("Watch SE") !== -1) && <div key={i} ref={refWatchSE}>
+                    {baseFix(SE) &&
+                      SE.price &&
+                      (SE.name.indexOf("SE 2023 Gen") !== -1 ||
+                        SE.name.indexOf("Watch SE") !== -1) &&
+                      returnFixPrice(SE, fixName(SE)) + SE.price}
+                  </div>}
+              </>
             ))}
             <br />
             <div>⌚️Apple Watch S8</div>
@@ -103,9 +110,9 @@ const Apple = ({ fullList }) => {
               </div>
             ))}
             <br />
-            <div>⌚️Apple Watch S9</div>
+            {refWatchS9 ? <div>⌚️Apple Watch S9</div> : null}
             {result.map((s9, i) => (
-              <div key={i}>
+              <div key={i} ref={refWatchS9}>
                 {baseFix(s9) &&
                   s9.price &&
                   s9.name.indexOf("Apple Watch S9") !== -1 &&
