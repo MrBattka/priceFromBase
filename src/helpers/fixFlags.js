@@ -38,7 +38,8 @@ const flags = [
   "VC/A",
   "HX/A",
   "PY",
-  "JP"
+  "JP",
+  "QN/A"
 ];
 
 let LLAFlag = /LL\/A/g;
