@@ -61,8 +61,8 @@ const Samsung = ({ fullList }) => {
                   returnFixPrice(galaxy, fixName(galaxy)) + galaxy.price}
               </div>
             ))}
-            <br />
-            <div>📲 Galaxy Tab</div>
+            {isTab && <br />}
+            {isTab && <div>📲 Galaxy Tab</div>}
             {result.map((tab, i) => (
               <div key={i}>
                 {baseFix(tab) &&
