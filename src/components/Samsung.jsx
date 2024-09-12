@@ -6,6 +6,7 @@ import { copyTable } from "../helpers/copy";
 
 const Samsung = ({ fullList }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isTab, setTab] = useState(false);
 
   const arr = [];
 
@@ -67,6 +68,7 @@ const Samsung = ({ fullList }) => {
                 {baseFix(tab) &&
                   tab.price &&
                   tab.name.indexOf("Samsung Galaxy Tab") !== -1 &&
+                  (tab || setTab(true)) &&
                   returnFixPrice(tab, fixName(tab)) + tab.price}
               </div>
             ))}

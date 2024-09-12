@@ -6,6 +6,13 @@ import { copyTable } from "../helpers/copy";
 
 const Apple = ({ fullList }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isAwSE, setIsAWSE] = useState(false)
+  const [isAwS8, setIsAWS8] = useState(false)
+  const [isAwS9, setIsAWS9] = useState(false)
+  const [isiPad, setIsIPad] = useState(false)
+  const [isMacBook, setIsMacBook] = useState(false)
+  const [isiMac, setIsIMac] = useState(false)
+  const [isiPhone, setIsIphone] = useState(false)
 
   const arr = [];
 
@@ -74,78 +81,83 @@ const Apple = ({ fullList }) => {
                   returnFixPrice(apple, fixName(apple)) + apple.price}
               </div>
             ))}
-            <br />
-            <div>📲 Apple iPhone</div>
+            {isiPhone && <br />}
+            {isiPhone && <div>📲 Apple iPhone</div>}
             {result.map((iPhone, i) => (
               <div key={i}>
                 {baseFix(iPhone) &&
                   iPhone.price &&
                   iPhone.name.indexOf("iPhone") !== -1 &&
+                  (isiPhone || setIsIphone(true)) &&
                   returnFixPrice(iPhone, fixName(iPhone)) + iPhone.price}
               </div>
             ))}
-            <br />
-            {refWatchSE ? <div>⌚️ Apple Watch SE 2023</div> : null}
+            {isAwSE && <br />}
+            {isAwSE && <div>⌚️ Apple Watch SE 2023</div>}
             {result.map((SE, i) =>
             (
-              <>
-                {(SE.name.indexOf("SE 2023 Gen") !== -1 ||
-                  SE.name.indexOf("Watch SE") !== -1) && <div key={i} ref={refWatchSE}>
-                    {baseFix(SE) &&
-                      SE.price &&
-                      (SE.name.indexOf("SE 2023 Gen") !== -1 ||
-                        SE.name.indexOf("Watch SE") !== -1) &&
-                      returnFixPrice(SE, fixName(SE)) + SE.price}
-                  </div>}
-              </>
+              <div key={i} ref={refWatchSE}>
+                {baseFix(SE) &&
+                  SE.price &&
+                  (SE.name.indexOf("SE 2023 Gen") !== -1 ||
+                    SE.name.indexOf("Watch SE") !== -1) &&
+                  (isAwSE || setIsAWSE(true)) &&
+                  returnFixPrice(SE, fixName(SE)) + SE.price}
+              </div>
             ))}
-            <br />
-            <div>⌚️Apple Watch S8</div>
+            {isAwS8 && <br />}
+            {isAwS8 && <div>⌚️Apple Watch S8</div>}
             {result.map((s8, i) => (
               <div key={i}>
                 {baseFix(s8) &&
                   s8.price &&
                   s8.name.indexOf("Apple Watch S8") !== -1 &&
+                  (isAwS8 || setIsAWS8(true)) &&
                   returnFixPrice(s8, fixName(s8)) + s8.price}
               </div>
             ))}
-            <br />
-            {refWatchS9 ? <div>⌚️Apple Watch S9</div> : null}
+            {isAwS9 && <br />}
+            {isAwS9 && <div>⌚️Apple Watch S9</div>}
             {result.map((s9, i) => (
               <div key={i} ref={refWatchS9}>
                 {baseFix(s9) &&
                   s9.price &&
                   s9.name.indexOf("Apple Watch S9") !== -1 &&
+                  (isAwS9 || setIsAWS9(true)) &&
                   returnFixPrice(s9, fixName(s9)) + s9.price}
               </div>
             ))}
-            <br />
-            <div>📲 Apple iPad</div>
+            {isiPad && <br />}
+            {isiPad && <div>📲 Apple iPad</div>}
             {result.map((iPad, i) => (
               <div key={i}>
                 {baseFix(iPad) &&
                   iPad.price &&
                   iPad.name.indexOf("iPad") !== -1 &&
+                  (isiPad || setIsIPad(true)) &&
                   returnFixPrice(iPad, fixName(iPad)) + iPad.price}
               </div>
             ))}
-            <br />
-            <div>📲 Apple MacBook</div>
+            {isMacBook && <br />}
+            {isMacBook && <div>📲 Apple MacBook</div>}
             {result.map((macbook, i) => (
               <div key={i}>
                 {baseFix(macbook) &&
                   macbook.price &&
                   macbook.name.indexOf("MacBook") !== -1 &&
+                  (isMacBook ||
+                    setIsMacBook(true)) &&
                   returnFixPrice(macbook, fixName(macbook)) + macbook.price}
               </div>
             ))}
-            <br />
-            <div>📲 Apple iMac</div>
+            {isiMac && <br />}
+            {isiMac && <div>📲 Apple iMac</div>}
             {result.map((iMac, i) => (
               <div key={i}>
                 {baseFix(iMac) &&
                   iMac.price &&
                   iMac.name.indexOf("iMac") !== -1 &&
+                  (isiMac || setIsIMac(true)) &&
                   returnFixPrice(iMac, fixName(iMac)) + iMac.price}
               </div>
             ))}
